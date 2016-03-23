@@ -1,0 +1,23 @@
+***Change log for fluxable-newmenu***
+0.1: Fluxable-newmenu was adapted from the f123-newmenu script used in the F123 GNU-Linux distro.
+(sometime in 2014)
+
+0.2: Some category parsing was changed to make more logical submenus and avoid multiple listings for applications.
+
+0.3: Development and games categories were added.
+
+0.4: An orca configuration item was added to the main fluxable menu.
+Games parsing was corrected to include some games that were missed in previous versions.
+
+0.4.1: Filemanager is now set in configuration file.
+
+0.5:Nov 07, 2015- Package becomes easily distributable as an basic installer and a manpage are written.
+Automatic filemanager selection code is added to give best experience and avoid potentially buggy or unstable situations.  
+  
+0.5.1: Dec 22, 2015- Installer and manpage are improved.
+ 
+   
+ToDo: Add an other category for applications not included in existing categories.
+Do not display orca prefferences, (configure screenreader), item on systems where orca is not present.
+Work on more universal shutdown and reboot items, or fork for non systemd systems.
+ 

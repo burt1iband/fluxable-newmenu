@@ -1,0 +1,249 @@
+#!/bin/bash
+## fluxablenewmenu, by B.H.: burt1iband@gmail.com
+##Fluxable-newmenu provides a categorized apps menus directory
+##similar in appearance to the applications menus in Gnome2, Mate, or XFCE.
+##A standard installation gives an alternative to the inaccessible
+##to screenreaders fluxbox apps menu.
+##Alternative installations may be used with desktops such as Gnome-shell
+##or Unity that do not show categorized apps menus by default.
+## Reboot, shutdown and orca prefferences entries are also available.
+##This work is based on the F123newmenu script.
+##Modifications were made to meet the neeeds of the Fluxability project, and
+##relevent  enhancements have been made available to the F123 team.
+## Thanks go to Fernando and Kyle from the F123 project
+##
+##This work is distributed underthe terms of the GPL2, and 
+##may be optionally be redistributed under any later version of the 
+##GNU General Public License http://fsf.org/
+##A previous version of this work was released under the terms of the WTFPL License: http://wtfpl.net
+## If you need the wtf license, write to me explaining your thoughts/reasoning.
+##
+
+## Select the best available filemanager to display ap. menus
+## avoiding potential conflicts. To override this auto selection
+## uncomment AFM line in ~/.fluxable/fluxable.conf and set your choice there.
+## Only override auto selection if you realy know what you are doing.
+
+## Notification function
+CHOSEN() {
+if [ -n $DISPLAY ]; then
+notify-send "Loading Aps-Menus in $FM"
+else
+echo "Aps-menus will be displayed in $FM"
+fi
+} 
+
+FMPID=$(pgrep nautilus)
+
+if [ -z $FMPID ]; then 
+if [ -f /usr/bin/caja ]; then
+FM=caja
+$(CHOSEN)
+elif [ -f /usr/bin/pcmanfm ]; then
+FM=pcmanfm
+$(CHOSEN)
+else
+FM=nautilus
+$(CHOSEN)
+fi
+else
+if [ -f /usr/bin/pcmanfm ]; then
+FM=pcmanfm
+$(CHOSEN)
+else
+FM=nautilus
+$(CHOSEN)
+fi
+fi
+
+copy(){
+	if [ -z "$(grep NoDisplay=true "$1")" ]
+	then
+		cp "$1" "$2"
+	fi
+}
+
+ if [[ -f ~/.fluxable/fluxable.conf ]]; then
+ . ~/.fluxable/fluxable.conf
+ else
+ . /etc/fluxable/fluxable.conf
+ fi
+
+if ! [ -z $AFM ]; then
+FM=$AFM
+fi
+
+root=/tmp/fluxable/menus
+
+mkdir -p $root
+
+## Look for currently installed GUI aps and organize them for display
+folder=Accessories
+case $language in
+	pt) folder="Acessórios" ;;
+	es) folder="Accesorios" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Utility | grep -v Accessibility | grep -v X-Xfce-Toplevel | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder="Universal Access"
+case $language in
+	pt) folder="Acesso universal" ;;
+	es) folder="Acceso universal" ;;
+esac
+mkdir -p $root/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Accessibility | grep -v Settings | cut -d: -f1)
+do
+	copy $f $root/"$folder"
+done
+chmod +x -R $root/"$folder"
+
+folder=Development
+case $language in
+     pt) folder="Programa�ao" ;;
+     es) folder="Desaroyo" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | egrep 'Development|WebDevelopment' | cut -d: -f1)
+do
+     copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Graphics
+case $language in
+	pt) folder="Gráficos" ;;
+	es) folder="Gráficos" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Graphics | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Games
+case $language in
+     pt) folder="Jogos" ;;
+     es) folder="Juegos" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | egrep 'Game|ArcadeGame|BoardGame' | cut -d: -f1)
+do
+     copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Internet
+case $language in
+	pt) folder="Internet" ;;
+	es) folder="Internet" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Network | grep -v X-GNOME-WebApplication | grep -v X-Xfce-Toplevel | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Multimedia
+case $language in
+	pt) folder="Multimídia" ;;
+	es) folder="Sonido y vídeo" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep AudioVideo | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Office
+case $language in
+	pt) folder="Escritório" ;;
+	es) folder="Oficina" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Office | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=System
+case $language in
+	pt) folder="Ferramenta de sistema" ;;
+	es) folder="Herramientas del sistema" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep System | grep -v FileManager | grep -v Settings | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Preferences
+case $language in
+	pt) folder="Preferências" ;;
+	es) folder="Preferencias" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Settings | grep -v System | grep -v X-GNOME-Settings-Panel | grep -v DesktopSettings | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+folder=Administration
+case $language in
+	pt) folder="Administração" ;;
+	es) folder="Administración" ;;
+esac
+mkdir -p "$root"/"$folder"
+for f in $(grep Categories -R /usr/share/applications/ | grep Settings | grep System | grep -v X-GNOME-Settings-Panel | cut -d: -f1)
+do
+	copy $f "$root"/"$folder"
+done
+chmod +x -R "$root"/"$folder"
+
+## Screenreader Config Command
+#Open Orca prefs window
+name="Configure Screenreader"
+case $language in
+     pt) name="Reinicializar orca" ;;
+     es) name="Configurar Lector de Pantalla" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=orca -s\nType=Application" > "$root/orca-config.desktop"
+chmod +x "$root/orca-config.desktop"
+
+## shutdown and restart computer commands
+name="Restart Computer"
+case $language in
+	pt) name="Reinicializar Computador" ;;
+	es) name="Reiniciar Computador" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=gksu systemctl reboot\nType=Application" > "$root/reboot.desktop"
+chmod +x "$root/reboot.desktop"
+
+name="Shutdown Computer"
+case $language in
+	pt) name="Desligar Computador" ;;
+	es) name="Apagar Computador" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=gksu systemctl poweroff\nType=Application" > "$root/poweroff.desktop"
+chmod +x "$root/poweroff.desktop"
+
+## Display the menu if X is running
+if [ -n $DISPLAY ]; then
+	"$FM" "$root"
+else
+	echo Menu updated.
+fi
+cp -r $root $HOME/.fluxable/

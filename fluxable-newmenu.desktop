@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=fluxable-newmenu
+GenericName=applications-menu
+Comment=Displays categorized applications menus in the best available filemanager
+Exec=/usr/bin/fluxable-newmenu
+Terminal=false
+StartupNotify=true
+Categories=Utility;Accessibility;
