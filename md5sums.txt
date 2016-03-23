@@ -1,0 +1,7 @@
+06b87df9eb78d1c16848b30fd8132b34  change.log
+ce8faf81e0d432d8442ba1d71ab0568d  fluxable.conf.org
+45c523672a921ed71ff427af27e9aaf9  fluxable-newmenu
+32326ca68cccce26af99f36493f6d07d  fluxable-newmenu.1.gz
+229b6914c4373a6225e7a4782dcbd17f  fluxable-newmenu.desktop
+28ed23bc9de95935b76daf6788ecec01  install-fluxable.sh
+c17f9fff7b7f6f2e8532d5f9eb4e63bf  README.md
