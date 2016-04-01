@@ -228,7 +228,7 @@ case $language in
 	es) name="Reiniciar Computador" ;;
 esac
 mkdir -p "$root"
-echo -e "[Desktop Entry]\nName=$name\nExec=gksu systemctl reboot\nType=Application" > "$root/reboot.desktop"
+echo -e "[Desktop Entry]\nName=$name\nExec=reboot-pkexec\nType=Application" > "$root/reboot.desktop"
 chmod +x "$root/reboot.desktop"
 
 name="Shutdown Computer"
@@ -237,8 +237,18 @@ case $language in
 	es) name="Apagar Computador" ;;
 esac
 mkdir -p "$root"
-echo -e "[Desktop Entry]\nName=$name\nExec=gksu systemctl poweroff\nType=Application" > "$root/poweroff.desktop"
+echo -e "[Desktop Entry]\nName=$name\nExec=gksu poweroff\nType=Application" > "$root/poweroff.desktop"
 chmod +x "$root/poweroff.desktop"
+
+## Turn monitor on and off
+name="Monitor Toggle"
+case $language in
+     pt) name="Apague tela" ;;
+     es) name="Apaga Pantalla" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "$root/monitor-toggle.desktop"
+chmod +x "$root/monitor-toggle.desktop"
 
 ## Display the menu if X is running
 if [ -n $DISPLAY ]; then
