@@ -1,7 +1,8 @@
-06b87df9eb78d1c16848b30fd8132b34  change.log
+732057bb8051dcd36395718b93b36b3f  change.log
 ce8faf81e0d432d8442ba1d71ab0568d  fluxable.conf.org
-45c523672a921ed71ff427af27e9aaf9  fluxable-newmenu
+dada712ed30ca6e6ffe95b76b45ef760  fluxable-newmenu
 32326ca68cccce26af99f36493f6d07d  fluxable-newmenu.1.gz
 229b6914c4373a6225e7a4782dcbd17f  fluxable-newmenu.desktop
-28ed23bc9de95935b76daf6788ecec01  install-fluxable.sh
+0f8fcc48ea5db2886f3448a658ab4520  install-fluxable.sh
+7fcd3ae9f57a2b1c094dc20ba44caec4  monitor-toggle
 c17f9fff7b7f6f2e8532d5f9eb4e63bf  README.md

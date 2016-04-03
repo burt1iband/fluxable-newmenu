@@ -15,9 +15,14 @@ Games parsing was corrected to include some games that were missed in previous v
 Automatic filemanager selection code is added to give best experience and avoid potentially buggy or unstable situations.  
   
 0.5.1: Dec 22, 2015- Installer and manpage are improved.
+
+0.5.2: Apr 2, 2016- Monitor toggle script added along with root menu item to run it.
+New dependency: xorg-xrandr
+Bash installer is now working with git files. It had been broken for over a week due to changed file name which was done to work correctly with 
+Arch-Linux packaging.
+
  
-   
 ToDo: Add an other category for applications not included in existing categories.
 Do not display orca prefferences, (configure screenreader), item on systems where orca is not present.
 Work on more universal shutdown and reboot items, or fork for non systemd systems.
- 
+Minor clean up of bash installer, and inclusion of /usr/share/doc/fluxable-newmenu dir to be compatible with distro specific packages. 

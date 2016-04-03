@@ -14,12 +14,12 @@ sudo install -m 644 ./fluxable-newmenu.1.gz /usr/share/man/man1/
 
 if ! [ -d /etc/fluxable ]; then
 sudo mkdir -p /etc/fluxable
-sudo install -m 644 ./fluxable.conf /etc/fluxable/fluxable.conf
+sudo install -m 644 ./fluxable.conf.org /etc/fluxable/fluxable.conf
 else
 if [ -f /etc/fluxable/fluxable.conf ]; then
-sudo install -m 644 ./fluxable.conf /etc/fluxable/fluxable.conf.new-rn
+sudo install -m 644 ./fluxable.conf.org /etc/fluxable/fluxable.conf.org
      else
-sudo install -m 644 ./fluxable.conf /etc/fluxable/fluxable.conf
+sudo install -m 644 ./fluxable.conf.org /etc/fluxable/fluxable.conf
      fi
      fi
 
@@ -29,9 +29,9 @@ sudo chown $WHO ~/.fluxable
      fi
 
 if [ -f $HOME/.fluxable/fluxable.conf ]; then
-cp ./fluxable.conf $HOME/.fluxable/fluxable.conf.new
+cp ./fluxable.conf.org $HOME/.fluxable/fluxable.conf.org
      else
-cp ./fluxable.conf $HOME/.fluxable/fluxable.conf
+cp ./fluxable.conf.org $HOME/.fluxable/fluxable.conf
 sudo chown -R $WHO ~/.fluxable
      fi
 
