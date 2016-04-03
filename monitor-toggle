@@ -1,0 +1,15 @@
+#!/bin/bash
+output=$(xrandr | grep ' connected ' | awk '{print $1}' | head -1)
+echo $output > /tmp/montog 
+screenSize=$(xrandr | awk 'BEGIN {foundOutput=0}
+    / '$output' / {foundOutput=1}
+    /\*\+/ {print $1}
+    /^[^ ]/ {if(foundOutput) exit 0}')
+echo $screenSize >> /tmp/montog
+if [ "$screenSize" != "" ]; then
+    xrandr --output $output --fb $screenSize --off
+	spd-say 'Monitor Off Now'
+else
+    xrandr --output $output --auto
+    spd-say 'Monitor Back On'
+fi
