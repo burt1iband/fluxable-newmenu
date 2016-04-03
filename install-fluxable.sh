@@ -8,6 +8,7 @@ WHO="$(logname)"
 
 ## Install components/do not overwrite existing config files
 sudo install -m 755 ./fluxable-newmenu /usr/bin/
+sudo install -m 755 ./monitor-toggle /usr/bin/
 sudo install -m 644 ./fluxable-newmenu.desktop /usr/share/applications/
 sudo install -m 644 ./fluxable-newmenu.1.gz /usr/share/man/man1/
 
