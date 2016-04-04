@@ -10,9 +10,12 @@
 ##This work is based on the F123newmenu script.
 ##Modifications were made to meet the neeeds of the Fluxability project, and
 ##relevent  enhancements have been made available to the F123 team.
-## Thanks go to Fernando and Kyle from the F123 project
+## Thanks go to Fernando and Kyle from the F123 project.
 ##
-##This work is distributed underthe terms of the GPL2, and 
+## Monitor-toggle was written for the Vinux project, http://vinuxproject.org.
+## Thanks Bill Cox, Luke Yelavich and Rob White.
+##
+##This work is distributed underthe terms of the GPL3, and 
 ##may be optionally be redistributed under any later version of the 
 ##GNU General Public License http://fsf.org/
 ##A previous version of this work was released under the terms of the WTFPL License: http://wtfpl.net
@@ -26,11 +29,11 @@
 
 ## Notification function
 CHOSEN() {
-if [ -n $DISPLAY ]; then
+     if [ -n $DISPLAY ]; then
 notify-send "Loading Aps-Menus in $FM"
-else
-echo "Aps-menus will be displayed in $FM"
-fi
+     else
+echo "Aps-menus would be displayed in $FM"
+     fi
 } 
 
 FMPID=$(pgrep nautilus)
@@ -63,11 +66,16 @@ copy(){
 	fi
 }
 
- if [[ -f ~/.fluxable/fluxable.conf ]]; then
+## Check configuration files if they exist.
+     if [[ -f ~/.fluxable/fluxable.conf ]]; then
  . ~/.fluxable/fluxable.conf
  else
  . /etc/fluxable/fluxable.conf
- fi
+## Make user's fluxable dir if it is missing.
+     if ! [ -d ~/.fluxable ]; then
+mkdir ~/.fluxable
+     fi
+     fi
 
 if ! [ -z $AFM ]; then
 FM=$AFM
@@ -251,9 +259,9 @@ echo -e "[Desktop Entry]\nName=$name\nExec=gksu systemctl poweroff\nType=Applica
 chmod +x "$root/poweroff.desktop"
 
 ## Display the menu if X is running
-if [ -n $DISPLAY ]; then
-	"$FM" "$root"
-else
+     if [ -n "$DISPLAY" ]; then
+"$FM" "$root"
+     else
 	echo Menu updated.
 fi
 cp -r $root $HOME/.fluxable/
