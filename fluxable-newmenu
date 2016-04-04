@@ -31,9 +31,6 @@
 CHOSEN() {
      if [ -n $DISPLAY ]; then
 notify-send "Loading Aps-Menus in $FM"
-     else
-echo "Aps-menus would be displayed in $FM.
-Menu structure can be examined in ~/.fluxable/menus."
      fi
 } 
 
@@ -263,6 +260,7 @@ chmod +x "$root/poweroff.desktop"
      if [ -n "$DISPLAY" ]; then
 "$FM" "$root"
      else
-	echo Menu updated.
+	echo "Menu updated.
+Menu structure can be examined in ~/.fluxable/menus."
 fi
 cp -r $root $HOME/.fluxable/
