@@ -32,7 +32,8 @@ CHOSEN() {
      if [ -n $DISPLAY ]; then
 notify-send "Loading Aps-Menus in $FM"
      else
-echo "Aps-menus would be displayed in $FM"
+echo "Aps-menus would be displayed in $FM.
+Menu structure can be examined in ~/.fluxable/menus."
      fi
 } 
 
