@@ -261,6 +261,6 @@ chmod +x "$root/poweroff.desktop"
 "$FM" "$root"
      else
 	echo "Menu updated.
-Menu structure can be examined in ~/.fluxable/menus."
+Examine it in ~/.fluxable/menus."
 fi
 cp -r $root $HOME/.fluxable/

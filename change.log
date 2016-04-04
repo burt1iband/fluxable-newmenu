@@ -21,7 +21,11 @@ New dependency: xorg-xrandr
 Bash installer is now working with git files. It had been broken for over a week due to changed file name which was done to work correctly with 
 Arch-Linux packaging.
 
+0.5.3: Apr 3, 2016- User's .flluxable directory is now added from main script if it is missing.
+Messaging is improved for the rare case when F-NM is not run from a graphical session.
+Code tidied up a bit, and comments updated. 
  
+
 ToDo: Add an other category for applications not included in existing categories.
 Do not display orca prefferences, (configure screenreader), item on systems where orca is not present.
 Work on more universal shutdown and reboot items, or fork for non systemd systems.
