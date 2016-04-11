@@ -221,6 +221,16 @@ mkdir -p "$root"
 echo -e "[Desktop Entry]\nName=$name\nExec=orca -s\nType=Application" > "$root/orca-config.desktop"
 chmod +x "$root/orca-config.desktop"
 
+## Turn monitor on and off
+name="Monitor Toggle"
+case $language in
+     pt) name="Apague tela" ;;
+     es) name="Apaga Pantalla" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "$root/monitor-toggle.desktop"
+chmod +x "$root/monitor-toggle.desktop"
+
 ## shutdown and restart computer commands
 name="Restart Computer"
 case $language in
@@ -239,16 +249,6 @@ esac
 mkdir -p "$root"
 echo -e "[Desktop Entry]\nName=$name\nExec=gksu poweroff\nType=Application" > "$root/poweroff.desktop"
 chmod +x "$root/poweroff.desktop"
-
-## Turn monitor on and off
-name="Monitor Toggle"
-case $language in
-     pt) name="Apague tela" ;;
-     es) name="Apaga Pantalla" ;;
-esac
-mkdir -p "$root"
-echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "$root/monitor-toggle.desktop"
-chmod +x "$root/monitor-toggle.desktop"
 
 ## Display the menu if X is running
 if [ -n $DISPLAY ]; then
