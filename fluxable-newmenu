@@ -1,5 +1,5 @@
 #!/bin/bash
-## fluxablenewmenu, by B.H.: burt1iband@gmail.com
+## fluxable-newmenu, by B.H.: burt1iband@gmail.com
 ##Fluxable-newmenu provides a categorized apps menus directory
 ##similar in appearance to the applications menus in Gnome2, Mate, or XFCE.
 ##A standard installation gives an alternative to the inaccessible
@@ -8,9 +8,12 @@
 ##or Unity that do not show categorized apps menus by default.
 ## Reboot, shutdown and orca prefferences entries are also available.
 ##This work is based on the F123newmenu script.
-##Modifications were made to meet the neeeds of the Fluxability project, and
+##Modifications were made to meet the needs of the Fluxability project, and
 ##relevent  enhancements have been made available to the F123 team.
 ## Thanks go to Fernando and Kyle from the F123 project
+##
+## Monitor-toggle was written for the Vinux project, http://vinuxproject.org.
+## Thanks Bill Cox, Luke Yelavich and Rob White.
 ##
 ##This work is distributed underthe terms of the GPL2, and 
 ##may be optionally be redistributed under any later version of the 
@@ -230,6 +233,16 @@ esac
 mkdir -p "$root"
 echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "$root/monitor-toggle.desktop"
 chmod +x "$root/monitor-toggle.desktop"
+
+## Logout of Xsession
+name="Xsession Logout"
+case $language in
+	pt) name="Salir de Secion" ;;
+	es) name="Salir de Secion Grafico" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=gnome-session-quit --logout\nType=Application" > "$root/logout.desktop"
+chmod +x "$root/logout.desktop"
 
 ## shutdown and restart computer commands
 name="Restart Computer"
