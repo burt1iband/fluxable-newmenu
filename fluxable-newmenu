@@ -238,7 +238,7 @@ case $language in
 	es) name="Reiniciar Computador" ;;
 esac
 mkdir -p "$root"
-echo -e "[Desktop Entry]\nName=$name\nExec=reboot-pkexec\nType=Application" > "$root/reboot.desktop"
+echo -e "[Desktop Entry]\nName=$name\nExec=gksu reboot\nType=Application" > "$root/reboot.desktop"
 chmod +x "$root/reboot.desktop"
 
 name="Shutdown Computer"
