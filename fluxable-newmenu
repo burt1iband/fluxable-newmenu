@@ -78,6 +78,11 @@ fi
 
 root=/tmp/fluxable/menus
 
+## If old menus exist, get rid of em!
+     if [ -d $root ]; then
+rm -rf $root
+     fi 
+
 mkdir -p $root
 
 ## Look for currently installed GUI aps and organize them for display
@@ -236,8 +241,8 @@ chmod +x "$root/monitor-toggle.desktop"
 
 ## Logout of Xsession
 ## Are we using mate, if not logout of gnome session.
-Ms="$(pgrep -c mate-session)"
-     if ! [ -z "$Ms" ]; then
+Ms="$(pgrep mate-session)"
+     if [ -n "$Ms" ]; then
 LOcmd="mate-session-save --logout-dialog"
      else
 LOcmd="gnome-session-quit --logout"
