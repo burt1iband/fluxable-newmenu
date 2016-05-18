@@ -235,13 +235,21 @@ echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "
 chmod +x "$root/monitor-toggle.desktop"
 
 ## Logout of Xsession
+## Are we using mate, if not logout of gnome session.
+Ms="$(pgrep -c mate-session)"
+     if ! [ -z "$Ms" ]; then
+LOcmd="mate-session-save --logout-dialog"
+     else
+LOcmd="gnome-session-quit --logout"
+fi
+
 name="Xsession Logout"
 case $language in
 	pt) name="Salir de Secion" ;;
 	es) name="Salir de Secion Grafico" ;;
 esac
 mkdir -p "$root"
-echo -e "[Desktop Entry]\nName=$name\nExec=gnome-session-quit --logout\nType=Application" > "$root/logout.desktop"
+echo -e "[Desktop Entry]\nName=$name\nExec=$LOcmd\nType=Application" > "$root/logout.desktop"
 chmod +x "$root/logout.desktop"
 
 ## shutdown and restart computer commands
