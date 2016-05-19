@@ -250,7 +250,7 @@ fi
 
 name="Xsession Logout"
 case $language in
-	pt) name="Salir de Secion" ;;
+	pt) name="Desconexao da Sessao" ;;
 	es) name="Salir de Secion Grafico" ;;
 esac
 mkdir -p "$root"
