@@ -236,7 +236,17 @@ esac
 mkdir -p "$root"
 echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "$root/monitor-toggle.desktop"
 chmod +x "$root/monitor-toggle.desktop"
- 
+
+## Logout of Xsession
+name="Xsession Logout"
+case $language in
+     pt) name="Desconexao da Sessao" ;;
+     es) name="Salir de Secion Grafico" ;;
+esac
+mkdir -p "$root"
+echo -e "[Desktop Entry]\nName=$name\nExec=gnome-session-quit --logout\nType=Application" > "$root/logout.desktop"
+chmod +x "$root/logout.desktop"
+  
 ## shutdown and restart computer commands
 name="Restart Computer"
 case $language in
