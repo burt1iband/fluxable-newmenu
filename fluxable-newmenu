@@ -81,6 +81,11 @@ fi
 
 root=/tmp/fluxable/menus
 
+## If old menus exist, get rid of em!
+     if [ -d $root ]; then
+rm -rf $root
+     fi
+ 
 mkdir -p $root
 
 ## Look for currently installed GUI aps and organize them for display
