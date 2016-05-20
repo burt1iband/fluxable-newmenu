@@ -24,6 +24,13 @@ Arch-Linux packaging.
 0.5.3: Apr 3, 2016- User's .flluxable directory is now added from main script if it is missing.
 Messaging is improved for the rare case when F-NM is not run from a graphical session.
 Code tidied up a bit, and comments updated. 
+
+0.5.4: May 19 2016- Logout menu entry code imported from vnx branch. Gnome, mate and unity are supported.
+Old menus are deleted before new ones are written, i.e. uninstalled aps no longer remain till reboot.
+A few corrections and additions to credit comments.
+
+0.5.5: May 19 2016- Logout command now supports multiple graphical environments, and the logout item is not added to the menu if no supported session is 
+found.
  
 
 ToDo: Add an other category for applications not included in existing categories.

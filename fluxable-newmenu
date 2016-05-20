@@ -243,14 +243,39 @@ echo -e "[Desktop Entry]\nName=$name\nExec=monitor-toggle\nType=Application" > "
 chmod +x "$root/monitor-toggle.desktop"
 
 ## Logout of Xsession
-## Are we using mate, if not logout of gnome session.
-Ms="$(pgrep mate-session)"
-     if [ -n "$Ms" ]; then
-LOcmd="mate-session-save --logout-dialog"
-     else
-LOcmd="gnome-session-quit --logout"
+## What desktop or window manager are we using? Logout item is not created
+## if no supported session is detected
+
+     if [ -n "$(pgrep fluxbox)" ]; then
+Xs="fb"
+     elif [ -n "$(pgrep gnome-session)" ]; then
+Xs="gs"
+     elif [ -n "$(pgrep mate-session)" ]; then
+Xs="ms"
+elif [ -n "$(pgrep xfce4-session)" ]; then
+Xs="xs"
 fi
 
+echo "$(date)" >> /tmp/fluxable/test.log
+echo "Xsession: ${Xs}" >> /tmp/fluxable/test.log
+
+case $Xs in
+fb)
+LOcmd="fluxbox-remote Exit"
+;;
+ms)
+LOcmd="mate-session-save --logout"
+;;
+xs)
+LOcmd="xfce4-session-logout --logout"
+;;
+gs)
+#LOcmd="gnome-session-quit --logout"
+;;
+esac
+echo "Logout command: ${LOcmd}" >> /tmp/fluxable/test.log
+
+     if [ -n "$Xs" ]; then
 name="Xsession Logout"
 case $language in
      pt) name="Desconexao da Sessao" ;;
@@ -259,7 +284,8 @@ esac
 mkdir -p "$root"
 echo -e "[Desktop Entry]\nName=$name\nExec=$LOcmd\nType=Application" > "$root/logout.desktop"
 chmod +x "$root/logout.desktop"
- 
+     fi 
+
 ## shutdown and restart computer commands
 name="Restart Computer"
 case $language in

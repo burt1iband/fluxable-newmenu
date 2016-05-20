@@ -15,5 +15,8 @@ For more information please see the manpage.
 Find our code on github at:
 https://github.com/burt1iband/fluxable-newmenu/
 
+Pull from master if your distro has full systemd integration.
+If you are using Vinux5 or older, Ubuntu, Ubuntu-gnome, mate-ubuntu; or any distro release that can't shutdown via systemd, pull from the vnx branch.
+
 This work is released under the terms of the GNU publilc license, version 3.
 As usual it may be distributed under the terms of this version of the gpl or any later version you prefer.
