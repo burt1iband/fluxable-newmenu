@@ -31,9 +31,13 @@ A few corrections and additions to credit comments.
 
 0.5.5: May 19 2016- Logout command now supports multiple graphical environments, and the logout item is not added to the menu if no supported session is 
 found.
- 
+
+0.5.5.1: May 24 2016- Ratpoison support added for gui logout command.
+  
 
 ToDo: Add an other category for applications not included in existing categories.
 Do not display orca prefferences, (configure screenreader), item on systems where orca is not present.
 Work on more universal shutdown and reboot items, or fork for non systemd systems.
 Minor clean up of bash installer, and inclusion of /usr/share/doc/fluxable-newmenu dir to be compatible with distro specific packages. 
+Need to add LXDE test and logout cmd to logout code.
+    
