@@ -245,13 +245,14 @@ chmod +x "$root/monitor-toggle.desktop"
 ## Logout of Xsession
 ## What desktop or window manager are we using? Logout item is not created
 ## if no supported session is detected
-
      if [ -n "$(pgrep fluxbox)" ]; then
 Xs="fb"
      elif [ -n "$(pgrep gnome-session)" ]; then
 Xs="gs"
      elif [ -n "$(pgrep mate-session)" ]; then
 Xs="ms"
+elif [ -n "$(pgrep ratpoison)" ]; then
+Xs="rs"
 elif [ -n "$(pgrep xfce4-session)" ]; then
 Xs="xs"
 fi
@@ -265,6 +266,9 @@ LOcmd="fluxbox-remote Exit"
 ;;
 ms)
 LOcmd="mate-session-save --logout"
+;;
+rs)
+LOcmd="ratpoison -c quit"
 ;;
 xs)
 LOcmd="xfce4-session-logout --logout"
