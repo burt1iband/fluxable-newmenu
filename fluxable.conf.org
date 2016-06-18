@@ -31,3 +31,9 @@ AN=au_notes
 ## Pause Time: How long to wait, (seconds), before starting recording/value may be multiplied several times when running in verbos mode
 PT=0.70
 
+## Bookmarks options
+## Directory for temperary bookmarks storage
+Tpath=/tmp/fluxable
+
+## Storage dir for persistent bookmakrs
+Ppath=$Home/fluxable/bkm
