@@ -21,7 +21,7 @@ DFMcmd="pcmanfm --desktop"
 ## Default time format to use: use man date as a reference...
 #DTF=
 
-## Recording configuration
+## Recording
 ## Where to put streams and recorded notes directories
 RD=$HOME/Audio 
 
