@@ -33,7 +33,7 @@ PT=0.70
 
 ## Bookmarks options
 ## Directory for temperary bookmarks storage
-Tpath=/tmp/fluxable
+Tpath=/tmp/fluxable/bkm
 
-## Storage dir for persistent bookmakrs
+## Storage dir for persistent bookmarks
 Ppath=$Home/fluxable/bkm
